@@ -12,7 +12,7 @@ class Ball extends Component {
   render() {
     return (
       <Animated.View style={this.position.getLayout()}>
-      <View style={styles.ball} />
+        <View style={styles.ball} />
       </Animated.View>
     );
   }
