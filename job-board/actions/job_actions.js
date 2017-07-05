@@ -19,13 +19,20 @@ const JOB_QUERY_PARMS = {
 const buildJobsUrl = (zip) => {
   const query = qs.stringify({ ...JOB_QUERY_PARMS, l: zip });
   return `${JOB_ROOT_URL}${query}`;
-}
+};
 
-export const fetchJob = (region) => async (dispatch) => {
+export const fetchJob = (region, cb) => async (dispatch) => {
   try {
     let zip = await reverseGeocode(region);
+    let url = buildJobsUrl(zip);
+    let { data } = await axios.get(url);
+    dispatch({
+      type: FETCH_JOBS,
+      payload: data
+    });
+    cb();
   } catch (e) {
     console.error(e);
   }
 
-}
+};
