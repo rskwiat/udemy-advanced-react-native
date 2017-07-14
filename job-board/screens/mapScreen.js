@@ -62,11 +62,11 @@ class MapScreen extends Component {
 
 const styles = {
   buttonContainer: {
-    position: 'absoulte',
+    position: 'absolute',
     bottom: 20,
     left: 0,
     right: 0
   }
-}
+};
 
 export default connect(null, actions)(MapScreen);

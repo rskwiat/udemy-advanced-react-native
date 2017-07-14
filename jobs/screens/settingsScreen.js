@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Platform } from 'react-native';
+import { Card, Button } from 'react-native-elements';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class SettingsScreen extends Component {
+  static navigationOptions = {
+    headerStyle: {
+        marginTop: Platform.OS === 'android' ? 24 : 0
+      }
+  }
+
   render() {
     return (
       <View>
-        <Text>Settings Screen</Text>
-        <Text>Settings Screen</Text>
-        <Text>Settings Screen</Text>
-        <Text>Settings Screen</Text>
+        <Card>
+          <Button
+            title="Reset"
+            large
+            icon={{ name: 'delete-forever' }}
+            backgroundColor="#F44336"
+            onPress={this.props.clearLikedJobs}
+          />
+        </Card>
       </View>
     );
   }
 
 }
 
-export default SettingsScreen;
+export default connect(null, actions)(SettingsScreen);

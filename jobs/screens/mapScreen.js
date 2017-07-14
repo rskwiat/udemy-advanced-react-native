@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import { MapView } from 'expo';
-import { View, Text, ActivityIndicator } from 'react-native';
-import { Button } from 'react-native-elements';
+import { View, ActivityIndicator } from 'react-native';
+import { Button, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 class MapScreen extends Component {
+  static navigationOptions = {
+    tabBarLabel: 'Map',
+    tabBarIcon: ({ tintColor }) => (
+      <Icon
+        name='my-location'
+        size={24}
+        color={tintColor}
+      />
+    )
+  };
+
   state = {
     mapLoaded: false,
     region: {
@@ -62,11 +73,12 @@ class MapScreen extends Component {
 
 const styles = {
   buttonContainer: {
-    position: 'absoulte',
+    position: 'absolute',
     bottom: 20,
     left: 0,
     right: 0
   }
-}
+};
+
 
 export default connect(null, actions)(MapScreen);

@@ -9,7 +9,7 @@ import {
 // AsyncStorage.setItem('fb_token', token);
 // AsyncStorage.getItem('fb_token');
 
-const ID = '244039319432538';
+const ID = '149947595575946';
 
 export const facebookLogin = () => async dispatch => {
   const token = await AsyncStorage.getItem('fb_token');

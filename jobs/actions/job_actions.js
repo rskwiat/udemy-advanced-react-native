@@ -3,7 +3,9 @@ import reverseGeocode from 'latlng-to-zip';
 import qs from 'qs';
 
 import {
-  FETCH_JOBS
+  FETCH_JOBS,
+  LIKE_JOB,
+  CLEAR_JOBS
 } from './types';
 
 const JOB_ROOT_URL = 'http://api.indeed.com/ads/apisearch?';
@@ -11,7 +13,7 @@ const JOB_QUERY_PARMS = {
   publisher: '1492029013888154',
   format: 'json',
   v: '2',
-  latlng: 1,
+  latlong: 1,
   radius: 10,
   q: 'javascript'
 };
@@ -34,5 +36,17 @@ export const fetchJob = (region, cb) => async (dispatch) => {
   } catch (e) {
     console.error(e);
   }
+};
 
+export const likeJob = (job) => {
+  return {
+    type: LIKE_JOB,
+    payload: job
+  };
+};
+
+export const clearLikedJobs = () => {
+  return {
+    type: CLEAR_JOBS
+  };
 };
